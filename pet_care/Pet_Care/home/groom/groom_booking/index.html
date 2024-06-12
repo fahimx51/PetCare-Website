@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pet Care Services</title>
+      <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+         body {
+         font-family: Arial, sans-serif;
+         background-color: #f4f4f4;
+         margin: 0;
+         padding: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         background-image: url('pet1.jpg');
+         background-size: cover;
+         background-position: center;
+         position: relative;
+         }
+         .card {
+         background-color: #fff;
+         border-radius: 16px; 
+         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+         overflow: hidden;
+         width: 400px;
+         animation: fadeInUp 0.5s ease-out;
+         color: #fff;
+         }
+         h2 {
+         text-align: center;
+         color: #fff;
+         margin-top: 0;
+         margin-bottom: 10px;
+         padding: 20px;
+         background-color: rgba(44, 52, 45, 0.8); 
+         border-top-left-radius: 16px; 
+         border-top-right-radius: 16px;
+         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+         font-size: 24px; 
+         }
+         form {
+         padding: 20px;
+         }
+         label {
+         display: block;
+         margin-bottom: 8px;
+         color: #333; 
+         }
+         input, select {
+         width: calc(100% - 16px);
+         padding: 10px;
+         margin-bottom: 16px;
+         box-sizing: border-box;
+         border: 1px solid #ccc;
+         border-radius: 8px;
+         }
+         button {
+         background-color: #3c433d;
+         color: #fff;
+         padding: 12px 24px;
+         border: none;
+         border-radius: 8px;
+         cursor: pointer;
+         font-size: 16px;
+         transition: background-color 0.3s ease-in-out;
+         }
+         button:hover {
+         background-color: #9c2020;
+         }
+         @keyframes fadeInUp {
+         from {
+         opacity: 0;
+         transform: translateY(20px);
+         }
+         to {
+         opacity: 1;
+         transform: translateY(0);
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="card">
+         <h2>Pet Care Services Booking</h2>
+         <form action="process_booking.php" method="post">
+            <label for="serviceType">Service Type:</label>
+            <select id="serviceType" name="serviceType" required>
+               <option value="grooming">Grooming</option>
+               <option value="boarding">Boarding</option>
+               <option value="daycare">Day Care</option>
+               <option value="veterinary">Veterinary</option>
+               <option value="vaccination">Vaccination</option>
+               <option value="emergency">Emergency Care</option>
+            </select>
+            <br>
+            <label for="petName">Pet Name:</label>
+            <input type="text" id="petName" name="petName" required><br>
+            <label for="petAge">Pet Age:</label>
+            <input type="number" id="petAge" name="petAge" required><br>
+            <label for="petColor">Pet Color:</label>
+            <input type="text" id="petColor" name="petColor" required><br>
+            <button type="submit">Submit Booking</button>
+            
+         </form>
+      </div>
+   </body>
+</html>

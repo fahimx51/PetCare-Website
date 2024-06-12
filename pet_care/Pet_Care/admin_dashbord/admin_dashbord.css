@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../admin_dashbord/admin_img/admin_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 50px;
+}
+
+.logo {
+  padding: 10px;
+  text-align: center;
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav li {
+  padding: 10px 0;
+}
+
+.nav li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.nav li a.active {
+  background-color: #555;
+}
+
+.nav li a:hover {
+  background-color: #555;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+.card {
+  width: calc(13% - 13px);
+  height: 130px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.card-header {
+  padding: 12px 16px;
+  background-color: #1cc933;
+  color: #fff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-body {
+  padding: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.card-body p {
+  margin: 0;
+  font-size: 35px;
+  color: #333;
+  font-weight: bold;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logout-button {
+  position: absolute;
+  left: 70px;
+  top: 95%;
+  align-items: center;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #4CAF50;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #384046;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+nav {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin: 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  color: #f1c40f;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+main h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+main p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+main button {
+  display: block;
+  margin: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #40494f;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+main button:hover {
+  background-color: #f1c40f;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-card {
+  width: 45%;
+  margin: 10px;
+  border: 1px solid #21618c;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.service-card h3 {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.service-card p {
+  font-size: 16px;
+  margin: 10px;
+}
+
+.service-card span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #21618c;
+  margin: 10px;
+  text-align: right;
+}
+
+.gallery {
+  margin-top: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Contact Section */
+.contact {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin: 10px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #21618c;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: none;
+}
+
+footer {
+  background-color: #21618c;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+footer p {
+  font-size: 16px;
+}
+
+.home {
+  background-image: url("../groom_booking/pet1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px;
+  color: #ffffff;
+}
+
+.home-content {
+  max-width: 600px;
+}
+
+.home-content p {
+  color: #fffdfd;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-left: 20px;
+}

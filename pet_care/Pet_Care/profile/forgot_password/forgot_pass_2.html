@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Verification Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('../../profile/image/bg-image.jpg'); /* Replace 'bg_image.jpg' with your image file path */
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center; /* Center align content within the card */
+        }
+        .card img {
+            max-width: 100%; /* Ensure the image doesn't exceed the width of the card */
+            margin-bottom: 20px; /* Add some space between the image and other content */
+        }
+        .card label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .otp-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .otp-inputs input[type="text"] {
+            width: calc(100% / 6 - 5px); /* Divide width equally among 6 inputs with some margin */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            text-align: center; /* Center align text within each input */
+            font-size: 16px; /* Adjust font size as needed */
+        }
+        .otp-inputs input[type="text"]:focus {
+            outline: none; /* Remove focus outline */
+            border-color: #007bff; /* Change border color on focus */
+        }
+        .card button[type="submit"],
+        .card button[type="button"] {
+            width: 100%;
+            background-color: #a96f1d;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .card button[type="submit"]:hover,
+        .card button[type="button"]:hover {
+            background-color: #48b300;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="../../profile/image/code.png" alt="Card Image"> <!-- Replace 'card_image.jpg' with your image file path -->
+        <h2>Enter Verification Code</h2><hr>
+        <form action="forgot_pass_2.php" method="post">
+            <label for="code">Enter the 6-digit verification code sent to your email:</label><br>
+            <div class="otp-inputs">
+                <input type="text" id="digit1" name="digit1" maxlength="1" pattern="\d" required oninput="moveToNext(this, 'digit2')">
+                <input type="text" id="digit2" name="digit2" maxlength="1" pattern="\d" required oninput="moveToNext(this, 'digit3')">
+                <input type="text" id="digit3" name="digit3" maxlength="1" pattern="\d" required oninput="moveToNext(this, 'digit4')">
+                <input type="text" id="digit4" name="digit4" maxlength="1" pattern="\d" required oninput="moveToNext(this, 'digit5')">
+                <input type="text" id="digit5" name="digit5" maxlength="1" pattern="\d" required oninput="moveToNext(this, 'digit6')">
+                <input type="text" id="digit6" name="digit6" maxlength="1" pattern="\d" required>
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <script>
+            function moveToNext(currentInput, nextInputId) {
+                if (currentInput.value.length >= currentInput.maxLength) {
+                    document.getElementById(nextInputId).focus();
+                }
+            }
+        </script>
+        
+        
+        <br>
+        <p id="countdownTimer"></p> <!-- Paragraph to display countdown timer -->
+        
+        <!-- Button to manually resend verification code -->
+        <button id="resendButton" onclick="resendVerificationCode()" style="display:none;">Resend Code</button>
+
+        <script>
+            var countdownInterval;
+
+            // Function to update countdown timer
+            function updateCountdown() {
+                var countdownElement = document.getElementById("countdownTimer");
+                var countdown = 60; // 180 seconds = 3 minutes
+                countdownInterval = setInterval(function() {
+                    countdown--;
+                    var minutes = Math.floor(countdown / 60);
+                    var seconds = countdown % 60;
+                    countdownElement.textContent = "Resend code in: " + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+                    if (countdown <= 0) {
+                        clearInterval(countdownInterval);
+                        countdownElement.textContent = ""; // Clear countdown timer
+                        document.getElementById("resendButton").style.display = "block"; // Show resend button
+                    }
+                }, 1000);
+            }
+
+            // Function to resend verification code
+            function resendVerificationCode() {
+                clearInterval(countdownInterval); // Clear previous countdown
+                document.getElementById("countdownTimer").textContent = ""; // Clear countdown timer
+                document.getElementById("resendButton").style.display = "none"; // Hide resend button
+                // Call PHP script to resend verification code
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "resend_verification_code.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert(xhr.responseText); // Alert response from PHP script
+                            updateCountdown(); // Start countdown
+                        } else {
+                            alert("Error: " + xhr.status); // Alert if request failed
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            // Start countdown timer when page loads
+            window.onload = function() {
+                updateCountdown();
+            };
+        </script>
+    </div>
+</body>
+</html>
